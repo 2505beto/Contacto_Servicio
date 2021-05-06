@@ -1,3 +1,4 @@
+
 <table border="1">
     <tr>
         <th>Nombres</th>
@@ -11,8 +12,8 @@
         
     </tr>
 
+    @foreach($data as $personal)
     <tr>
-        @foreach($data as $personal)
         <th>{{$personal["nombres"]}}</th>
         <th>{{$personal["apellidos"]}}</th>
         <th>{{$personal["fechaNacimiento"]}}</th>
@@ -21,7 +22,7 @@
         <th>{{$personal["telefono"]}}</th>
         <th>{{$personal["sexo"]}}</th>
         <th>{{$personal["costoPorHora"]}}</th>
-        @endforeach
     </tr>
+    @endforeach
 
 </table>

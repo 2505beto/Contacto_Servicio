@@ -14,6 +14,19 @@ class ClienteController extends Controller
     }
 
     public function registrar(Request $data){
+
+        $data->validate(
+            ['nombres' => 'required | regex:/^[\pL\s\-]+$/u' ,
+            'apellidos' => 'required | regex:/^[\pL\s\-]+$/u',
+            'fechaNacimiento' => 'required | date',
+            'correo' => 'required | email',
+            'contraseña' => 'required',
+            'telefono' => 'required | digits:9',
+            'sexo' => 'required',
+            ]
+
+    );
+
         $cliente = new Cliente();
         $cliente->nombres = $data["nombres"];
         $cliente->apellidos = $data["apellidos"];
@@ -25,10 +38,6 @@ class ClienteController extends Controller
         $cliente->sexo = $data["sexo"];
         $cliente->save();
         return "Cliente Guardado";
-    }
-
-    public function eliminar(){
-
     }
 
     public function actualizar(){

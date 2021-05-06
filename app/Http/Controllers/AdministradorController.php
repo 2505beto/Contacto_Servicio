@@ -14,6 +14,16 @@ class AdministradorController extends Controller
     }
 
     public function registrar(Request $data){
+
+        $data->validate(
+                ['nombres' => 'required | regex:/^[\pL\s\-]+$/u' ,
+                'apellidos' => 'required | regex:/^[\pL\s\-]+$/u',
+                'fechaNacimiento' => 'required | date',
+                'correo' => 'required | email',
+                'contraseña' => 'required',
+                ]
+
+        );
         $administrador = new Administrador();
         $administrador->nombres = $data["nombres"];
         $administrador->apellidos = $data["apellidos"];
@@ -24,8 +34,5 @@ class AdministradorController extends Controller
         return "Administrador Guardado";
     }
 
-    public function eliminar(){
-
-    }
 
 }

@@ -34,8 +34,6 @@ Route::post("/registrar-cliente", [ClienteController::class, "registrar"]);
 
 Route::get("/mostrar-cliente", [ClienteController::class, "mostrar"]);
 
-Route::post("/eliminar-cliente", [ClienteController::class, "eliminar"]);
-
 Route::post("/actualizar-cliente", [ClienteController::class, "actualizar"]);
 
 Route::view("/registro-servicio", "registrarServicios");
@@ -44,15 +42,11 @@ Route::post("/registrar-servicio", [ServiciosController::class, "registrar"]);
 
 Route::get("/mostrar-servicio", [ServiciosController::class, "mostrar"]);
 
-Route::post("/eliminar-servicio", [ServiciosController::class, "eliminar"]);
-
 Route::view("/registro-personal", "registrarPersonal");
 
 Route::post("/registrar-personal", [PersonalController::class, "registrar"]);
 
 Route::get("/mostrar-personal", [PersonalController::class, "mostrar"]);
-
-Route::post("/eliminar-personal", [PersonalController::class, "eliminar"]);
 
 Route::post("/actualizar-personal", [PersonalController::class, "actualizar"]);
 
@@ -62,9 +56,10 @@ Route::post("/registrar-administrador", [AdministradorController::class, "regist
 
 Route::get("/mostrar-administrador", [AdministradorController::class, "mostrar"]);
 
-Route::post("/eliminar-administrador", [AdministradorController::class, "eliminar"]);
-
 Route::post("/actualizar-administrador", [AdministradorController::class, "actualizar"]);
 
 
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

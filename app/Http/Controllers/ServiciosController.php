@@ -14,14 +14,14 @@ class ServiciosController extends Controller
     }
 
     public function registrar(Request $data){
+        $data->validate(
+            ['nombreServicio' => 'required | regex:/^[\pL\s\-]+$/u', 
+            ]);
         $servicios = new Servicios();
         $servicios->nombreServicio = $data["nombreServicio"];
         $servicios->save();
         return "Servicio Guardado";
     }
 
-    public function eliminar(){
-
-    }
 
 }
